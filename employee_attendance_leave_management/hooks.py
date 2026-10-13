@@ -8,7 +8,34 @@ app_license = "mit"
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["erpnext", "hrms"]
+
+after_migrate = "employee_attendance_leave_management.setup.after_migrate"
+
+doc_events = {
+	"Employee Checkin": {"on_update": "employee_attendance_leave_management.attendance_utils.on_checkin_save"}
+}
+
+permission_query_conditions = {
+	"Attendance Correction Request": ("employee_attendance_leave_management.permissions.correction_query"),
+}
+
+has_permission = {
+	"Attendance Correction Request": (
+		"employee_attendance_leave_management.permissions.correction_has_permission"
+	),
+}
+
+fixtures = [
+	{
+		"dt": "Custom DocPerm",
+		"filters": [["parent", "=", "Attendance Correction Request"]],
+	},
+	{
+		"dt": "Property Setter",
+		"filters": [["doc_type", "=", "Attendance Correction Request"]],
+	},
+]
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -261,4 +288,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-
