@@ -35,6 +35,7 @@ fixtures = [
 		"dt": "Property Setter",
 		"filters": [["doc_type", "=", "Attendance Correction Request"]],
 	},
+	{"dt": "Role", "filters": [["name", "=", "Employee Attendance User"]]},
 ]
 
 # Each item in the list will be shown as an app in the apps page
