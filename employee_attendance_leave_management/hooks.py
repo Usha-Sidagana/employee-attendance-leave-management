@@ -10,7 +10,11 @@ app_license = "mit"
 
 required_apps = ["erpnext", "hrms"]
 
-after_migrate = "employee_attendance_leave_management.setup.after_migrate"
+after_migrate = [
+	"employee_attendance_leave_management.setup.after_migrate",
+	"employee_attendance_leave_management.install.after_install",
+]
+after_install = "employee_attendance_leave_management.install.after_install"
 
 doc_events = {
 	"Employee Checkin": {"on_update": "employee_attendance_leave_management.attendance_utils.on_checkin_save"}
